@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h3> Welcome @HttpContext.Current.User.Identity.Name</h3>
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p class="btn">@Html.ActionLink("Login","Login","User") </p>
+</div>
+
+
+@if (Request.IsAuthenticated)
+{
+    using(Html.BeginForm("Logout","User", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+    }
+}
